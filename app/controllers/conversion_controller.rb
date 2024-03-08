@@ -5,8 +5,8 @@ class ConversionController < ApplicationController
   rescue_from StandardError, with: :handle_error
 
   def convert_currency
-    from = params[:from]
-    to = params[:to]
+    from = params[:from].upcase if params[:from]
+    to = params[:to].upcase if params[:to]
     amount = params[:amount]
 
     if from && to && amount
